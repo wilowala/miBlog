@@ -3,7 +3,7 @@ from app.models import User,Blogs, Comments
 
 class UserModelTest(unittest.TestCase):
     def setUp(self):
-        self.new_user = User("Michelle", "michelle@gmail.com", "1234")
+        self.new_user = User("Owalla", "owalla@gmail.com", "1234")
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_user, User))
@@ -25,7 +25,7 @@ class BlogModelTest(unittest.TestCase):
 
 class CommentModelTest(unittest.TestCase):
     def setUp(self):
-        self.new_comment = Comments("User ID","Comment Body","Pitch ID")
+        self.new_comment = Comments("User ID","Comment Body"," ID")
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_comment, Comments))
