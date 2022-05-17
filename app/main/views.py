@@ -12,26 +12,12 @@ from PIL import Image
 
 @main.route('/')
 def home():
-    return render_template('index.html')
-
-def save_picture(form_picture):
-    random_hex = secrets.token_hex(8)
-    _, f_ext = os.path.splitext(form_picture.filename)
-    picture_filename = random_hex + f_ext
-    picture_path = os.path.join('app/static/images', picture_filename)
-    form_picture.save(picture_path)
-    
-    output_size = (200, 200)
-    i = Image.open(form_picture)
-    i.thumbnail(output_size)
-    i.save(picture_path)
-    return picture_filename
-
-def blogs(id):
     blogs = Blogs.query.all()
-    comments = Comments.query.filter_by(id).all()
-    print(blogs)
-    return render_template(blogs=blogs, comments=comments)
+    arr =  []
+    for blog in blogs:
+        arr.append({'heading': blog.heading,'body':blog.body})
+    print(arr)
+    return render_template('index.html', blogs=arr)
 
 @main.route('/quotes')
 def quotes():
@@ -94,6 +80,11 @@ def new_blog():
         return redirect(url_for('main.home'))
     return render_template('newblog.html', form = form, followers=followers)
 
+@main.route('/blog')
+def blog(id):
+    comments = Comments.query.filter_by(id).all()
+    print(comments)
+    return render_template(blogs=blogs, comments=comments)
 
 @main.route('/blog/<blog_id>/update', methods = ['GET','POST'])
 @login_required
