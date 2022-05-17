@@ -1,0 +1,58 @@
+{% extends 'base.html'%}
+
+{% block body %}
+    <div class="container pt-5">
+        <h3 class="miblog">Blogs<span class="fs-1" style="color:#339989;">.</span></h3>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card-group col-md-12"> 
+              {% for blog in blogs %}
+              <div class="card border-info m-1" style="max-width: 25rem;">
+                  <div class="card-header w-100">{{blog.heading}}</div>
+                  <div class="card-body">
+                      <p class="card-text">{{blog.body}}</p>
+                  </div>
+                  <div class="row p-3">
+                      {%if current_user.is_authenticated%}
+                      <a class="col-md-4 col-sm-4" class="comment col-md-6" href="{{(url_for('main.new_comment', user_id = blog.user_id))}}">
+                          <i class="fa fa-comments" aria-hidden="true"></i>
+                      </a>
+                      {%else%}
+                      <i class="fa fa-comments col-md-4 col-sm-4" aria-hidden="true">
+                          <a class='pitch' href="{{(url_for('auth.register'))}}"></a>
+                      </i>
+                      {%endif%}
+                  </div>
+                  <div class="p-3">
+                      {%if current_user.is_authenticated%}
+                      Comments:
+                      {{comments}}
+                          {%for comment in comments%}
+                          <div class="alert alert-secondary" role="alert">
+                              {{comment.body}}
+                            </div>
+                          {%endfor%}
+                      {%endif%}
+                  </div>
+          
+              </div>
+              {{pitch['content']}}
+              {%endfor%}
+          </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="card p-3">
+                  <div class="content">
+                      <h5 class="mb-3 bold">Subscribe to miBlog</h5>
+                      <input class="form-control w-100" placeholder="Email">
+                      <button class="btn d-block w-100 mt-2">Subscribe</button>
+                  </div>
+              </div>
+              
+          </div>
+          </div>
+        </div>
+    </div> 
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+
+
+{% block body %}
+
+<div class="container">
+  <ul class="nav pt-3 justify-content-between">
+    <li class="nav-item">
+      <a class="fs-3 problogger" href="/">
+        miBlog<span class="fs-1" style="color:#c1a57b;">.</span>
+      </a>
+    </li>
+    <li class="nav-item row">
+      {%if current_user.is_authenticated%}
+      <a class="nav-link active col-md-6" href="{{url_for('main.profile')}}">Profile</a>
+      <a class="nav-link active col-md-6" href="{{url_for('auth.logout')}}">Logout</a>
+      {%else%}
+      <a class="nav-link active" href="{{url_for('auth.signup')}}">Signup</a>
+      {%endif%}
+    </li>
+  </ul>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-4 black">
+      <div class="content-section mt-4">
+        <div class="card testimonial-card">
+          <div class="card-up indigo lighten-1"></div>
+          <div class="avatar mx-auto white">
+            <img src="{{profile_pic_path}}" class="rounded account-img mt-2" alt="default">
+          </div>
+          <div class="card-body">
+            <h4 class="card-title text-center">{{current_user.username | title}}</h4>
+            <hr>
+            <p>{{current_user.email}}</p>
+            <p>{{current_user.bio}}</p>
+            <button class="btn btn-secondary text-dark mt-4">
+              <a style="text-decoration:none; color:#171A21;"
+                href="{{url_for('main.updateprofile',name=current_user.username)}}">Edit profile</a>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    {% endblock %}
