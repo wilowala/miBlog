@@ -2,11 +2,14 @@
 
 {% block body %}
     <div class="container pt-5">
+        {{blogs}}
         <h3 class="miblog">Blogs<span class="fs-1" style="color:#339989;">.</span></h3>
+        
         <div class="row">
           <div class="col-md-8">
-            <div class="card-group col-md-12"> 
-              {% for blog in blogs %}
+            {% for blog in blogs %}
+            <div class="card-group"> 
+              
               <div class="card border-info m-1" style="max-width: 25rem;">
                   <div class="card-header w-100">{{blog.heading}}</div>
                   <div class="card-body">
@@ -14,7 +17,7 @@
                   </div>
                   <div class="row p-3">
                       {%if current_user.is_authenticated%}
-                      <a class="col-md-4 col-sm-4" class="comment col-md-6" href="{{(url_for('main.new_comment', user_id = blog.user_id))}}">
+                      <a class="col-md-4 col-sm-4" class="comment col-md-6" href="{{(url_for('main.new_comment', user_id = blogs.user_id))}}">
                           <i class="fa fa-comments" aria-hidden="true"></i>
                       </a>
                       {%else%}
@@ -34,11 +37,10 @@
                           {%endfor%}
                       {%endif%}
                   </div>
-          
               </div>
-              {{pitch['content']}}
-              {%endfor%}
-          </div>
+              
+            </div>
+            {%endfor%}
           </div>
 
           <div class="col-md-4">
@@ -51,7 +53,7 @@
                   </div>
               </div>
               
-          </div>
+            </div>
           </div>
         </div>
     </div> 
