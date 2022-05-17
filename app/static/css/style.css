@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+    background: #FFFAFB;
+}
+
+.miblog{
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: -webkit-linear-gradient(91.3deg, #339989 -59.61%, #2F2E41 116.01%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* background: -webkit-linear-gradient(#1f7a8c, #022b3a 75%); */
+}
+
+/* NAV */
+.nav-link{
+    color: #131515;
+}
+.nav-link:hover{
+    color: #339989;
+}
+.nav-link:active{
+    color: #339989;
+}
+.problogger{
+    text-decoration: none;
+    color: #131515;
+}
+.problogger:hover{
+    color: #131515;
+}
+
+/* FOOTER */
+hr{
+    margin: auto;
+}
+.fa-twitter, .fa-linkedin, .fa-youtube-play{
+    color: #339989;
+}
+
+/* QUOTES  */
+.card1{
+    background-color:#131515;
+    border-radius:15px;
+    height:300px;
+    color: #f0f0f0;
+}
+.text1{
+    color:#fff;
+    font-weight:700;
+}
+.detail{
+    color: #f0f0f0;
+}
+
+.quote-link{
+    color: #f0f0f0;
+}
+
+
+/* SIGNUP */
+.btn{
+    background-color: #131515;
+    color: #f0f0f0;
+}
+.btn:hover{
+    color: #FFFAFB;
+}
+.confirm{
+    text-decoration: none;
+}
+
+.confirm:hover{
+    color: #000;
+}
+.quote-link{
+    text-decoration: none;
+    color: #000;
+}
+
+.quote-link:hover{
+    color: #f0f0f0
+}
+
+/* BLOGS */
+.top{
+    text-decoration: underline;
+    text-decoration-color: #c1a57b;
+    text-underline-position: under;
+}
